@@ -1,0 +1,42 @@
+#Defining the class as a template for character stats.
+class Stats:
+
+    #Setting the limits for input and allowing the input to repeat in case a wrong number was enterd.
+    @classmethod
+    def valid_stat(cls, prompt, min_value, max_value):
+        while True:
+            try:
+                value = int(input(prompt))
+                if min_value <= value <= max_value:
+                 return value
+                else:
+                   print(f"Invalid input. Please enter a number between {min_value} and {max_value}.")
+            except ValueError:
+             print(f"Invalid input. Please enter a valid stat, a whole number between {min_value} and {max_value}.")
+
+
+    #Defining a class method with the int input function for various stats.
+    @classmethod
+    def char_Stats(cls):
+
+        cls.stren = cls.valid_stat("Strength score (1-20): ", 1, 20)
+        cls.dex = cls.valid_stat("Dexterity score (1-20): ", 1, 20)
+        cls.cons = cls.valid_stat("Constitution score (1-20): ", 1, 20)
+        cls.inte = cls.valid_stat("Intelligence score (1-20): ", 1, 20)
+        cls.wisd = cls.valid_stat("Wisdom score (1-20): ", 1, 20)
+        cls.cha = cls.valid_stat("Charisma score (1-20): ", 1, 20)
+
+        #Printing the stats out in the terminal to have a visual feedback.
+        print(f"Your character's Strength score is {cls.stren}\n"
+              f"Your character's Dexterity score is {cls.dex}\n"
+              f"Your character's Constitution score is {cls.cons}\n"
+              f"Your character's Intelligence score is {cls.inte}\n"
+              f"Your character's Wisdom score is {cls.wisd}\n"
+              f"Your character's Charisma score is {cls.cha}")
+               
+        return cls.stren, cls.dex, cls.cons, cls.inte, cls.wisd, cls.cha
+    
+
+character1 = Stats()
+character1.char_Stats()
+
